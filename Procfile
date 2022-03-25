@@ -1,0 +1,1 @@
+worker: python modul1.py
