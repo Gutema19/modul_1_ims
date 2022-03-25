@@ -10,11 +10,10 @@ while (1):
         connection_to_bank = 1
         # open connection db toko online
         try:
-            connect_toko = pymysql.connect(host='sql110.byetcluster.com', user='epiz_31371652',
+            connect_toko = pymysql.connect(host='mysql110.epizy.com', user='epiz_31371652',
                                            password='lp6z3BgqWchE0lt', database='epiz_31371652_db_toko_online')
             cursor_toko = connect_toko.cursor()
         except:
-            print("cuma mau tau aja")
             print("\n")
             print("||=================================================||")
             print("||                   NOTIFIKASI                    ||")
