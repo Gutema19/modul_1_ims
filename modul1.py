@@ -10,8 +10,8 @@ while (1):
         connection_to_bank = 1
         # open connection db toko online
         try:
-            connect_toko = pymysql.connect(host='mysql110.epizy.com', user='epiz_31371652',
-                                           password='lp6z3BgqWchE0lt', database='epiz_31371652_db_toko_online')
+            connect_toko = pymysql.connect(host='sql6.freemysqlhosting.net', user='sql6481534',
+                                           password='IjWPY6sHWN', database='sql6481534')
             cursor_toko = connect_toko.cursor()
         except:
             print("\n")
