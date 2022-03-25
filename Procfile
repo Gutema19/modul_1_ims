@@ -1,1 +1,1 @@
-worker: python modul1.py
+worker: python <filename>.py
