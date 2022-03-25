@@ -14,6 +14,7 @@ while (1):
                                            password='lp6z3BgqWchE0lt', database='epiz_31371652_db_toko_online')
             cursor_toko = connect_toko.cursor()
         except:
+            print("cuma mau tau aja")
             print("\n")
             print("||=================================================||")
             print("||                   NOTIFIKASI                    ||")
