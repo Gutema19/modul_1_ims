@@ -23,8 +23,8 @@ while (1):
 
         # open connection db bank
         try:
-            connect_bank = pymysql.connect(host='localhost', user='bank',
-                                           password='bankku19', database='db_bank')
+            connect_bank = pymysql.connect(host='db4free.net', user='bankku',
+                                           password='bankku19', database='db_bankku')
             cursor_bank = connect_bank.cursor()
         except:
             print("||=================================================||")
