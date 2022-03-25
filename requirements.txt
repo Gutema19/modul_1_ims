@@ -1,1 +1,1 @@
-modul1.py
+Amino.py
