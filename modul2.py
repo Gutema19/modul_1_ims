@@ -35,7 +35,7 @@ while (1):
             print('-> Tidak dapat terhubung dengan basis data Bank')
             connection_to_bank = 0
 
-        # Toko cek jml data 
+        # Toko cek jml data
         sql = "SELECT * FROM tb_invoice"
         cursor_toko.execute(sql)
         result = cursor_toko.fetchall()
@@ -44,7 +44,7 @@ while (1):
         cursor_toko.execute(sql)
         integrasi = cursor_toko.fetchall()
 
-        # Bank cek jml data 
+        # Bank cek jml data
         sql = "SELECT * FROM tb_invoice"
         cursor_bank.execute(sql)
         result2 = cursor_bank.fetchall()
@@ -60,9 +60,9 @@ while (1):
         print("||=================================================||")
         print("\n")
         print("\n")
-        print("transaksi len = %d | integrasi len = %d" %
+        print("transaksi toko len = %d | integrasi toko len = %d" %
               (len(result), len(integrasi)))
-        
+
         print("||=================================================||")
         print("||                   NOTIFIKASI                    ||")
         print("||=================================================||")
@@ -70,9 +70,9 @@ while (1):
         print("||=================================================||")
         print("\n")
         print("\n")
-        print("transaksi len = %d | integrasi len = %d" %
+        print("transaksi bank len = %d | integrasi bank len = %d" %
               (len(result2), len(integrasi2)))
-        
+
         # insert listener toko
         if(len(result) > len(integrasi)):
             print("\n")
@@ -115,7 +115,7 @@ while (1):
                                                 "VALUES(%s, %s, %s, %s)"
                         cursor_bank.execute(insert_transaksi_bank, val)
                         connect_bank.commit()
-                
+
             # insert listener bank
             if(len(result2) > len(integrasi2)):
                 print("\n")
@@ -139,7 +139,7 @@ while (1):
                         print("||=================================================||")
                         print("\n")
                         print("==> PENAMBAHAN DATA PADA ID = %s DI %s" %
-                            (data[0], now))
+                              (data[0], now))
                         print("\n")
                         print("\n")
                         val = (data[1], data[2], data[3], data[4])
@@ -200,7 +200,7 @@ while (1):
                             dataIntegrasi[0])
                         cursor_bank.execute(delete_transaksi_bank)
                         connect_bank.commit()
-                
+
                 # delete listener db_toko
                 if(len(result2) < len(integrasi2)):
                     print("\n")
@@ -219,12 +219,15 @@ while (1):
                             if(dataIntegrasi[0] == data[0]):
                                 a = 1
                         if (a == 0):
-                            print("||=================================================||")
-                            print("||                   NOTIFIKASI                    ||")
-                            print("||=================================================||")
+                            print(
+                                "||=================================================||")
+                            print(
+                                "||                   NOTIFIKASI                    ||")
+                            print(
+                                "||=================================================||")
                             print("\n")
                             print("==> PENGHAPUSAN DATA PADA ID = %s DI %s --" %
-                                (dataIntegrasi[0], now))
+                                  (dataIntegrasi[0], now))
                             print("\n")
                             print("\n")
                             # delete row in tb_integrasi in db_bank
@@ -251,17 +254,26 @@ while (1):
                         if(data != dataIntegrasi):
                             print("\n")
                             print("\n")
-                            print("||=================================================||")
-                            print("||                   NOTIFIKASI                    ||")
-                            print("||=================================================||")
-                            print("||          SEDANG TERJADI PERUBAHAN DATA          ||")
-                            print("||                PADA DATABASE TOKO               ||")
-                            print("||=================================================||")
+                            print(
+                                "||=================================================||")
+                            print(
+                                "||                   NOTIFIKASI                    ||")
+                            print(
+                                "||=================================================||")
+                            print(
+                                "||          SEDANG TERJADI PERUBAHAN DATA          ||")
+                            print(
+                                "||                PADA DATABASE TOKO               ||")
+                            print(
+                                "||=================================================||")
                             print("\n")
                             print("\n")
-                            print("||=================================================||")
-                            print("||                   NOTIFIKASI                    ||")
-                            print("||=================================================||")
+                            print(
+                                "||=================================================||")
+                            print(
+                                "||                   NOTIFIKASI                    ||")
+                            print(
+                                "||=================================================||")
                             print("\n")
                             print("==> PERUBAHAN DATA PADA ID = %s DI %s --" %
                                   (dataIntegrasi[0], now))
@@ -292,23 +304,33 @@ while (1):
                             if(data != dataIntegrasi):
                                 print("\n")
                                 print("\n")
-                                print("||=================================================||")
-                                print("||                   NOTIFIKASI                    ||")
-                                print("||=================================================||")
-                                print("||          SEDANG TERJADI PERUBAHAN DATA          ||")
-                                print("||                PADA DATABASE TOKO               ||")
-                                print("||=================================================||")
+                                print(
+                                    "||=================================================||")
+                                print(
+                                    "||                   NOTIFIKASI                    ||")
+                                print(
+                                    "||=================================================||")
+                                print(
+                                    "||          SEDANG TERJADI PERUBAHAN DATA          ||")
+                                print(
+                                    "||                PADA DATABASE TOKO               ||")
+                                print(
+                                    "||=================================================||")
                                 print("\n")
                                 print("\n")
-                                print("||=================================================||")
-                                print("||                   NOTIFIKASI                    ||")
-                                print("||=================================================||")
+                                print(
+                                    "||=================================================||")
+                                print(
+                                    "||                   NOTIFIKASI                    ||")
+                                print(
+                                    "||=================================================||")
                                 print("\n")
                                 print("==> PERUBAHAN DATA PADA ID = %s DI %s --" %
-                                    (dataIntegrasi[0], now))
+                                      (dataIntegrasi[0], now))
                                 print("\n")
                                 print("\n")
-                                val = (data[1], data[2], data[3], data[4], data[0])
+                                val = (data[1], data[2],
+                                       data[3], data[4], data[0])
                                 update_integrasi_bank = "update tb_integrasi set no_rekening = %s, tgl_trx = %s," \
                                                         "total_transaksi = %s, status = %s where id_trx = %s"
                                 cursor_bank.execute(update_integrasi_bank, val)
@@ -317,16 +339,16 @@ while (1):
                                 if(connection_to_toko == 1):
                                     update_integrasi_toko = "update tb_integrasi set no_rekening = %s, tgl_trx = %s," \
                                                             "total_transaksi = %s, status = %s where id_trx = %s"
-                                    cursor_toko.execute(update_integrasi_toko, val)
+                                    cursor_toko.execute(
+                                        update_integrasi_toko, val)
                                     connect_toko.commit()
 
                                     update_transaksi_toko = "update tb_invoice set no_rekening = %s,  tgl_trx = %s," \
                                                             "total_transaksi = %s, status = %s where id_trx = %s"
-                                    cursor_toko.execute(update_transaksi_toko, val)
+                                    cursor_toko.execute(
+                                        update_transaksi_toko, val)
                                     connect_toko.commit()
 
-    
-    
     except (pymysql.Error, pymysql.Warning) as e:
         print(e)
 
