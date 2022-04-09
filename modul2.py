@@ -313,7 +313,7 @@ while (1):
                                 print(
                                     "||          SEDANG TERJADI PERUBAHAN DATA          ||")
                                 print(
-                                    "||                PADA DATABASE TOKO               ||")
+                                    "||                PADA DATABASE BANK               ||")
                                 print(
                                     "||=================================================||")
                                 print("\n")
