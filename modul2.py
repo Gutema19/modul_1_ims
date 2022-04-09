@@ -47,11 +47,11 @@ while (1):
 
         # Bank cek jml data
         sql = "SELECT * FROM tb_invoice"
-        cursor_bank.execute(sql2)
+        cursor_bank.execute(sql)
         result = cursor_bank.fetchall()
 
         sql = "SELECT * FROM tb_integrasi"
-        cursor_bank.execute(sql2)
+        cursor_bank.execute(sql)
         integrasi = cursor_bank.fetchall()
 
         print("||=================================================||")
