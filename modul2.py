@@ -203,50 +203,51 @@ while (1):
                         cursor_bank.execute(delete_transaksi_bank)
                         connect_bank.commit()
 
-                # delete listener db_bank
-                if(len(result) < len(integrasi)):
+        # delete listener db_bank
+        if(len(result) < len(integrasi)):
+            print("\n")
+            print("\n")
+            print("||=================================================||")
+            print("||                   NOTIFIKASI                    ||")
+            print("||=================================================||")
+            print("||         SEDANG TERJADI PENGHAPUSAN DATA         ||")
+            print("||                PADA DATABASE BANK               ||")
+            print("||=================================================||")
+            print("\n")
+            print("\n")
+            for dataIntegrasi in integrasi:
+                a = 0
+                for data in result:
+                    if(dataIntegrasi[0] == data[0]):
+                        a = 1
+                if (a == 0):
+                    print(
+                        "||=================================================||")
+                    print(
+                        "||                   NOTIFIKASI                    ||")
+                    print(
+                        "||=================================================||")
+                    print("\n")
+                    print("==> PENGHAPUSAN DATA PADA ID = %s DI %s --" %
+                            (dataIntegrasi[0], now))
                     print("\n")
                     print("\n")
-                    print("||=================================================||")
-                    print("||                   NOTIFIKASI                    ||")
-                    print("||=================================================||")
-                    print("||         SEDANG TERJADI PENGHAPUSAN DATA         ||")
-                    print("||                PADA DATABASE BANK               ||")
-                    print("||=================================================||")
-                    print("\n")
-                    print("\n")
-                    for dataIntegrasi in integrasi:
-                        a = 0
-                        for data in result:
-                            if(dataIntegrasi[0] == data[0]):
-                                a = 1
-                        if (a == 0):
-                            print(
-                                "||=================================================||")
-                            print(
-                                "||                   NOTIFIKASI                    ||")
-                            print(
-                                "||=================================================||")
-                            print("\n")
-                            print("==> PENGHAPUSAN DATA PADA ID = %s DI %s --" %
-                                  (dataIntegrasi[0], now))
-                            print("\n")
-                            print("\n")
-                            # delete row in tb_integrasi in db_bank
-                            delete_integrasi_bank = "DELETE FROM tb_integrasi WHERE id_trx = '%s'" % (
-                                dataIntegrasi[0])
-                            cursor_bank.execute(delete_integrasi_toko)
-                            connect_bank.commit()
+                    # delete row in tb_integrasi in db_bank
+                    delete_integrasi_bank = "DELETE FROM tb_integrasi WHERE id_trx = '%s'" % (
+                        dataIntegrasi[0])
+                    cursor_bank.execute(delete_integrasi_toko)
+                    connect_bank.commit()
 
-                            if(connection_to_toko == 1):
-                                delete_integrasi_toko = "DELETE FROM tb_integrasi WHERE id_trx = '%s'" % (
-                                    dataIntegrasi[0])
-                                cursor_toko.execute(delete_integrasi_toko)
-                                connect_toko.commit()
-                                delete_transaksi_toko = "DELETE FROM tb_invoice WHERE id_trx = '%s'" % (
-                                    dataIntegrasi[0])
-                                cursor_toko.execute(delete_transaksi_toko)
-                                connect_toko.commit()
+                    if(connection_to_toko == 1):
+                        delete_integrasi_toko = "DELETE FROM tb_integrasi WHERE id_trx = '%s'" % (
+                            dataIntegrasi[0])
+                        cursor_toko.execute(delete_integrasi_toko)
+                        connect_toko.commit()
+                        delete_transaksi_toko = "DELETE FROM tb_invoice WHERE id_trx = '%s'" % (
+                            dataIntegrasi[0])
+                        cursor_toko.execute(delete_transaksi_toko)
+                        connect_toko.commit()
+               
 
         # update listener db_toko
         if (result != integrasi):
@@ -298,58 +299,56 @@ while (1):
                                 cursor_bank.execute(update_transaksi_bank, val)
                                 connect_bank.commit()
 
-            # update listener db_bank
-            if (result != integrasi):
-                for data in result:
-                    for dataIntegrasi in integrasi:
-                        if(data[0] == dataIntegrasi[0]):
-                            if(data != dataIntegrasi):
-                                print("\n")
-                                print("\n")
-                                print(
-                                    "||=================================================||")
-                                print(
-                                    "||                   NOTIFIKASI                    ||")
-                                print(
-                                    "||=================================================||")
-                                print(
-                                    "||          SEDANG TERJADI PERUBAHAN DATA          ||")
-                                print(
-                                    "||                PADA DATABASE BANK               ||")
-                                print(
-                                    "||=================================================||")
-                                print("\n")
-                                print("\n")
-                                print(
-                                    "||=================================================||")
-                                print(
-                                    "||                   NOTIFIKASI                    ||")
-                                print(
-                                    "||=================================================||")
-                                print("\n")
-                                print("==> PERUBAHAN DATA PADA ID = %s DI %s --" %
-                                      (dataIntegrasi[0], now))
-                                print("\n")
-                                print("\n")
-                                val = (data[1], data[2],
-                                       data[3], data[4], data[0])
-                                update_integrasi_bank = "update tb_integrasi set no_rekening = %s, tgl_trx = %s," \
+        # update listener db_bank
+        if (result != integrasi):
+            for data in result:
+                for dataIntegrasi in integrasi:
+                    if(data[0] == dataIntegrasi[0]):
+                        if(data != dataIntegrasi):
+                            print("\n")
+                            print("\n")
+                            print(
+                                "||=================================================||")
+                            print(
+                                "||                   NOTIFIKASI                    ||")
+                            print(
+                                "||=================================================||")
+                            print(
+                                "||          SEDANG TERJADI PERUBAHAN DATA          ||")
+                            print(
+                                "||                PADA DATABASE BANK               ||")
+                            print(
+                                "||=================================================||")
+                            print("\n")
+                            print("\n")
+                            print(
+                                "||=================================================||")
+                            print(
+                                "||                   NOTIFIKASI                    ||")
+                            print(
+                                "||=================================================||")
+                            print("\n")
+                            print("==> PERUBAHAN DATA PADA ID = %s DI %s --" %
+                                    (dataIntegrasi[0], now))
+                            print("\n")
+                            print("\n")
+                            val = (data[1], data[2],
+                                  data[3], data[4], data[0])
+                            update_integrasi_bank = "update tb_integrasi set no_rekening = %s, tgl_trx = %s," \
+                                                    "total_transaksi = %s, status = %s where id_trx = %s"
+                            cursor_bank.execute(update_integrasi_bank, val)
+                            connect_bank.commit()
+
+                            if(connection_to_toko == 1):
+                                update_integrasi_toko = "update tb_integrasi set no_rekening = %s, tgl_trx = %s," \
                                                         "total_transaksi = %s, status = %s where id_trx = %s"
-                                cursor_bank.execute(update_integrasi_bank, val)
-                                connect_bank.commit()
+                                cursor_toko.execute(update_integrasi_toko, val)
+                                connect_toko.commit()
 
-                                if(connection_to_toko == 1):
-                                    update_integrasi_toko = "update tb_integrasi set no_rekening = %s, tgl_trx = %s," \
-                                                            "total_transaksi = %s, status = %s where id_trx = %s"
-                                    cursor_toko.execute(
-                                        update_integrasi_toko, val)
-                                    connect_toko.commit()
-
-                                    update_transaksi_toko = "update tb_invoice set no_rekening = %s,  tgl_trx = %s," \
-                                                            "total_transaksi = %s, status = %s where id_trx = %s"
-                                    cursor_toko.execute(
-                                        update_transaksi_toko, val)
-                                    connect_toko.commit()
+                                update_transaksi_toko = "update tb_invoice set no_rekening = %s,  tgl_trx = %s," \
+                                                        "total_transaksi = %s, status = %s where id_trx = %s"
+                                cursor_toko.execute(update_transaksi_toko, val)
+                                connect_toko.commit()        
 
     except (pymysql.Error, pymysql.Warning) as e:
         print(e)
