@@ -45,12 +45,12 @@ while (1):
         integrasi = cursor_toko.fetchall()
 
         # Bank cek jml data
-        sql = "SELECT * FROM tb_invoice"
-        cursor_bank.execute(sql)
+        sql2 = "SELECT * FROM tb_invoice"
+        cursor_bank.execute(sql2)
         result2 = cursor_bank.fetchall()
 
-        sql = "SELECT * FROM tb_integrasi"
-        cursor_bank.execute(sql)
+        sql2 = "SELECT * FROM tb_integrasi"
+        cursor_bank.execute(sql2)
         integrasi2 = cursor_bank.fetchall()
 
         print("||=================================================||")
@@ -201,7 +201,7 @@ while (1):
                         cursor_bank.execute(delete_transaksi_bank)
                         connect_bank.commit()
 
-                # delete listener db_toko
+                # delete listener db_bank
                 if(len(result2) < len(integrasi2)):
                     print("\n")
                     print("\n")
