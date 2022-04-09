@@ -204,7 +204,7 @@ while (1):
                         connect_bank.commit()
 
         # delete listener db_bank
-        if(len(result) < len(integrasi)):
+        if(len(result2) < len(integrasi2)):
             print("\n")
             print("\n")
             print("||=================================================||")
@@ -215,9 +215,9 @@ while (1):
             print("||=================================================||")
             print("\n")
             print("\n")
-            for dataIntegrasi in integrasi:
+            for dataIntegrasi in integrasi2:
                 a = 0
-                for data in result:
+                for data in result2:
                     if(dataIntegrasi[0] == data[0]):
                         a = 1
                 if (a == 0):
@@ -300,9 +300,9 @@ while (1):
                                 connect_bank.commit()
 
         # update listener db_bank
-        if (result != integrasi):
-            for data in result:
-                for dataIntegrasi in integrasi:
+        if (result2 != integrasi2):
+            for data in result2:
+                for dataIntegrasi in integrasi2:
                     if(data[0] == dataIntegrasi[0]):
                         if(data != dataIntegrasi):
                             print("\n")
