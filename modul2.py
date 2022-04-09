@@ -48,11 +48,11 @@ while (1):
         # Bank cek jml data
         sql2 = "SELECT * FROM tb_invoice"
         cursor_bank.execute(sql2)
-        result2 = cursor_bank.fetchall()
+        result = cursor_bank.fetchall()
 
         sql2 = "SELECT * FROM tb_integrasi"
         cursor_bank.execute(sql2)
-        integrasi2 = cursor_bank.fetchall()
+        integrasi = cursor_bank.fetchall()
 
         print("||=================================================||")
         print("||                   NOTIFIKASI                    ||")
@@ -72,7 +72,7 @@ while (1):
         print("\n")
         print("\n")
         print("transaksi bank len = %d | integrasi bank len = %d" %
-              (len(result2), len(integrasi2)))
+              (len(result), len(integrasi)))
 
         # insert listener toko
         if(len(result) > len(integrasi)):
