@@ -48,11 +48,11 @@ while (1):
         # Bank cek jml data
         sql2 = "SELECT * FROM tb_invoice"
         cursor_bank.execute(sql2)
-        result = cursor_bank.fetchall()
+        result2 = cursor_bank.fetchall()
 
         sql2 = "SELECT * FROM tb_integrasi"
         cursor_bank.execute(sql2)
-        integrasi = cursor_bank.fetchall()
+        integrasi2 = cursor_bank.fetchall()
 
         print("||=================================================||")
         print("||                   NOTIFIKASI                    ||")
@@ -117,48 +117,49 @@ while (1):
                         cursor_bank.execute(insert_transaksi_bank, val)
                         connect_bank.commit()
 
-            # insert listener bank
-            if(len(result) > len(integrasi)):
-                print("\n")
-                print("\n")
-                print("||=================================================||")
-                print("||                   NOTIFIKASI                    ||")
-                print("||=================================================||")
-                print("||          SEDANG TERJADI PENAMBAHAN DATA         ||")
-                print("||                PADA DATABASE BANK               ||")
-                print("||=================================================||")
-                for data in result:
-                    a = 0
-                    for data_integrasi in integrasi:
-                        if(data[0] == data_integrasi[0]):
-                            a = 1
-                    if (a == 0):
-                        print("\n")
-                        print("\n")
-                        print("||=================================================||")
-                        print("||                   NOTIFIKASI                    ||")
-                        print("||=================================================||")
-                        print("\n")
-                        print("==> PENAMBAHAN DATA PADA ID = %s DI %s" %
+        # insert listener bank
+        if(len(result2) > len(integrasi2)):
+            print("\n")
+            print("\n")
+            print("||=================================================||")
+            print("||                   NOTIFIKASI                    ||")
+            print("||=================================================||")
+            print("||          SEDANG TERJADI PENAMBAHAN DATA         ||")
+            print("||                PADA DATABASE BANK               ||")
+            print("||=================================================||")
+            for data in result2:
+                a = 0
+                for data_integrasi in integrasi2:
+                    if(data[0] == data_integrasi[0]):
+                        a = 1
+                if (a == 0):
+                    print("\n")
+                    print("\n")
+                    print("||=================================================||")
+                    print("||                   NOTIFIKASI                    ||")
+                    print("||=================================================||")
+                    print("\n")
+                    print("==> PENAMBAHAN DATA PADA ID = %s DI %s" %
                               (data[0], now))
-                        print("\n")
-                        print("\n")
-                        val = (data[1], data[2], data[3], data[4])
-                        insert_integrasi_bank = "INSERT INTO tb_integrasi (no_rekening,tgl_trx,total_transaksi, status)" \
-                                                "VALUES(%s, %s, %s, %s)"
-                        cursor_bank.execute(insert_integrasi_bank, val)
-                        connect_bank.commit()
+                    print("\n")
+                    print("\n")
+                    val = (data[1], data[2], data[3], data[4])
+                    insert_integrasi_bank = "INSERT INTO tb_integrasi (no_rekening,tgl_trx,total_transaksi, status)" \
+                                            "VALUES(%s, %s, %s, %s)"
+                    cursor_bank.execute(insert_integrasi_bank, val)
+                    connect_bank.commit()
 
-                        if(connection_to_toko == 1):
-                            insert_integrasi_toko = "INSERT INTO tb_integrasi (no_rekening,tgl_trx,total_transaksi, status)" \
+                    if(connection_to_toko == 1):
+                        insert_integrasi_toko = "INSERT INTO tb_integrasi (no_rekening,tgl_trx,total_transaksi, status)" \
                                                     "VALUES(%s, %s, %s, %s)"
-                            cursor_toko.execute(insert_integrasi_toko, val)
-                            connect_toko.commit()
+                        cursor_toko.execute(insert_integrasi_toko, val)
+                        connect_toko.commit()
 
-                            insert_transaksi_toko = "INSERT INTO tb_invoice (no_rekening,tgl_trx,total_transaksi, status)" \
+                        insert_transaksi_toko = "INSERT INTO tb_invoice (no_rekening,tgl_trx,total_transaksi, status)" \
                                                     "VALUES(%s, %s, %s, %s)"
-                            cursor_toko.execute(insert_transaksi_toko, val)
-                            connect_toko.commit()
+                        cursor_toko.execute(insert_transaksi_toko, val)
+                        connect_toko.commit()
+            
 
         # delete listener db_toko
         if(len(result) < len(integrasi)):
