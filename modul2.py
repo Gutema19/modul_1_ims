@@ -21,6 +21,7 @@ while (1):
             print("||=================================================||")
             print("\n")
             print('-> Tidak dapat terhubung dengan basis data Toko Online')
+            connection_to_toko = 0
 
         # open connection db bank
         try:
