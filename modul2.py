@@ -46,12 +46,12 @@ while (1):
         integrasi = cursor_toko.fetchall()
 
         # Bank cek jml data
-        sql = "SELECT * FROM tb_invoice"
-        cursor_bank.execute(sql)
+        sql2 = "SELECT * FROM tb_invoice"
+        cursor_bank.execute(sql2)
         result = cursor_bank.fetchall()
 
-        sql = "SELECT * FROM tb_integrasi"
-        cursor_bank.execute(sql)
+        sql2 = "SELECT * FROM tb_integrasi"
+        cursor_bank.execute(sql2)
         integrasi = cursor_bank.fetchall()
 
         print("||=================================================||")
