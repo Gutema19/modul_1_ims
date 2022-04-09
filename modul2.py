@@ -46,13 +46,13 @@ while (1):
         integrasi = cursor_toko.fetchall()
 
         # Bank cek jml data
-        sql2 = "SELECT * FROM tb_invoice"
+        sql = "SELECT * FROM tb_invoice"
         cursor_bank.execute(sql2)
-        result2 = cursor_bank.fetchall()
+        result = cursor_bank.fetchall()
 
-        sql2 = "SELECT * FROM tb_integrasi"
+        sql = "SELECT * FROM tb_integrasi"
         cursor_bank.execute(sql2)
-        integrasi2 = cursor_bank.fetchall()
+        integrasi = cursor_bank.fetchall()
 
         print("||=================================================||")
         print("||                   NOTIFIKASI                    ||")
@@ -72,7 +72,7 @@ while (1):
         print("\n")
         print("\n")
         print("transaksi bank len = %d | integrasi bank len = %d" %
-              (len(result2), len(integrasi2)))
+              (len(result), len(integrasi)))
 
         # insert listener toko
         if(len(result) > len(integrasi)):
@@ -118,7 +118,7 @@ while (1):
                         connect_bank.commit()
 
             # insert listener bank
-            if(len(result2) > len(integrasi2)):
+            if(len(result) > len(integrasi)):
                 print("\n")
                 print("\n")
                 print("||=================================================||")
@@ -127,9 +127,9 @@ while (1):
                 print("||          SEDANG TERJADI PENAMBAHAN DATA         ||")
                 print("||                PADA DATABASE BANK               ||")
                 print("||=================================================||")
-                for data in result2:
+                for data in result:
                     a = 0
-                    for data_integrasi in integrasi2:
+                    for data_integrasi in integrasi:
                         if(data[0] == data_integrasi[0]):
                             a = 1
                     if (a == 0):
@@ -203,7 +203,7 @@ while (1):
                         connect_bank.commit()
 
                 # delete listener db_bank
-                if(len(result2) < len(integrasi2)):
+                if(len(result) < len(integrasi)):
                     print("\n")
                     print("\n")
                     print("||=================================================||")
@@ -214,9 +214,9 @@ while (1):
                     print("||=================================================||")
                     print("\n")
                     print("\n")
-                    for dataIntegrasi in integrasi2:
+                    for dataIntegrasi in integrasi:
                         a = 0
-                        for data in result2:
+                        for data in result:
                             if(dataIntegrasi[0] == data[0]):
                                 a = 1
                         if (a == 0):
@@ -298,9 +298,9 @@ while (1):
                                 connect_bank.commit()
 
             # update listener db_bank
-            if (result2 != integrasi2):
-                for data in result2:
-                    for dataIntegrasi in integrasi2:
+            if (result != integrasi):
+                for data in result:
+                    for dataIntegrasi in integrasi:
                         if(data[0] == dataIntegrasi[0]):
                             if(data != dataIntegrasi):
                                 print("\n")
