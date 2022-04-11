@@ -235,7 +235,7 @@ while (1):
                     # delete row in tb_integrasi in db_bank
                     delete_integrasi_bank = "DELETE FROM tb_integrasi WHERE id_trx = '%s'" % (
                         dataIntegrasi[0])
-                    cursor_bank.execute(delete_integrasi_toko)
+                    cursor_bank.execute(delete_integrasi_bank)
                     connect_bank.commit()
 
                     if(connection_to_toko == 1):
