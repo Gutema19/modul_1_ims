@@ -1,7 +1,7 @@
 import pymysql
 from datetime import datetime
 import time
-import json
+
 
 while (1):
     first_boot = 1
@@ -10,8 +10,8 @@ while (1):
         connection_to_bank = 1
         # open connection db toko online
         try:
-            connect_toko = pymysql.connect(host='sql6.freemysqlhosting.net', user='sql6481534',
-                                           password='IjWPY6sHWN', database='sql6481534')
+            connect_toko = pymysql.connect(host='sql6.freemysqlhosting.net', user='sql6495070',
+                                           password='DfLRPYLBFb', database='sql6495070')
             cursor_toko = connect_toko.cursor()
         except:
             print("\n")
